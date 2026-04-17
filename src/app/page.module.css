@@ -1,0 +1,71 @@
+.app {
+  min-height: 100vh;
+  background: #f6f4f1;
+  color: #1a1a1a;
+}
+
+.header {
+  padding: 1.5rem 1.25rem 1rem;
+  border-bottom: 1px solid #e2ddd4;
+  background: #fff;
+}
+
+.headerRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.toggle {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid #c9c2b6;
+  background: #fff;
+  color: #2a2620;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.toggle:hover {
+  background: #f6f4f1;
+}
+
+.toggle:focus-visible {
+  outline: 2px solid #6b645a;
+  outline-offset: 2px;
+}
+
+.toggle.active {
+  background: #2a2620;
+  color: #fff;
+  border-color: #2a2620;
+}
+
+.toggle.active:hover {
+  background: #3a3630;
+}
+
+.main {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
