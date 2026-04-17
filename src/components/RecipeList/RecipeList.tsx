@@ -18,11 +18,12 @@ export default function RecipeList({ recipes, onToggleFavorite }: RecipeListProp
 
   return (
     <ul className={styles.list}>
-      {recipes.map((recipe) => (
+      {recipes.map((recipe, index) => (
         <li key={recipe.id} className={styles.item}>
           <RecipeCard
             recipe={recipe}
             onToggleFavorite={onToggleFavorite}
+            priority={index < 3}
           />
         </li>
       ))}
