@@ -13,25 +13,31 @@ export default function Home() {
   const [sortAscending, setSortAscending] = useState(true)
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  const [favoriteIds, setFavoriteIds] = useState<string[]>(() => {
-    if (typeof window === 'undefined') return []
+  const [favoriteIds, setFavoriteIds] = useState<string[]>([])
+  const [isHydrated, setIsHydrated] = useState(false)
+
+  // Only run on client after hydration
+  useEffect(() => {
+    setIsHydrated(true)
     try {
       const raw = localStorage.getItem('favoriteRecipeIds')
-      if (!raw) return []
-      const parsed = JSON.parse(raw)
-      return Array.isArray(parsed) ? parsed : []
+      if (raw) {
+        const parsed = JSON.parse(raw)
+        setFavoriteIds(Array.isArray(parsed) ? parsed : [])
+      }
     } catch {
-      return []
+      // ignore parse errors
     }
-  })
+  }, [])
 
   useEffect(() => {
+    if (!isHydrated) return
     try {
       localStorage.setItem('favoriteRecipeIds', JSON.stringify(favoriteIds))
     } catch {
       // ignore write errors (private mode / quota)
     }
-  }, [favoriteIds])
+  }, [favoriteIds, isHydrated])
 
   const recipesWithFavorites: RecipeWithFavorite[] = useMemo(() => {
     return recipes.map((recipe) => ({
