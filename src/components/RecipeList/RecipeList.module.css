@@ -1,7 +1,7 @@
 .list {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
+  gap: 1.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -10,6 +10,7 @@
 @media (min-width: 640px) {
   .list {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 }
 
@@ -21,6 +22,11 @@
 
 .item {
   display: flex;
+  width: 100%;
+}
+
+.item > * {
+  width: 100%;
 }
 
 .empty {
